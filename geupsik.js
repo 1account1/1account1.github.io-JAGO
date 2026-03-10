@@ -61,10 +61,16 @@ async function getGoogleSheet() {
   }
 }
 async function likupb(){
+  document.getElementById('lb').classList.toggle('fa-regular');
+  document.getElementById('lb').classList.toggle('fa-solid');
 }
 async function likupl(){
+  document.getElementById('ll').classList.toggle('fa-regular');
+  document.getElementById('ll').classList.toggle('fa-solid');
 }
 async function likupd(){
+  document.getElementById('ld').classList.toggle('fa-regular');
+  document.getElementById('ld').classList.toggle('fa-solid');
 }
 
 

@@ -22,6 +22,10 @@ body {
     z-index: 1000;
 }
 
+.fa-solid{
+    color: #ed4956;
+}
+
 .nav-wrapper {
     width: 70%;
     max-width: 1000px;
