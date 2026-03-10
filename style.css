@@ -1,0 +1,67 @@
+body{
+    margin: 0;
+}
+#lgnbtn{
+    position: absolute;
+    right: 0;
+    color: #002058;
+    text-decoration: none;
+}
+#me{
+    text-align: center;
+    margin: 30px;
+}
+#mee{
+    text-align: center;
+    margin: 30px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: max-content;
+    text-align: center;
+    display: flex;
+}
+.mebtn{
+    margin: 0 20px 0 20px;
+    color: #002058;
+    text-decoration: none;
+}
+@media screen and (max-width: 767px) {
+    #wides{
+        display: none;
+    }
+    #phones{
+        display: block;
+    }
+    h3{
+        border-bottom: solid;
+        color: white;
+        background-color: #002058;
+        border-width: 7px;
+        padding: 10px;
+        padding-bottom: 5px;
+        margin: 0;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 768px){
+    #wides{
+        display: block;
+    }
+    #phones{
+        display: none;
+    }
+    h1{
+        border-bottom: solid;
+        color: #002058;
+        border-color: #002058;
+        border-width: 7px;
+        padding: 10px;
+        padding-bottom: 5px;
+        margin: 0;
+        text-align: center;
+        font-size: smaller;
+    }
+}
