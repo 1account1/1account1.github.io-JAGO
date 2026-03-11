@@ -35,7 +35,7 @@
                     <div class="post-content">
                         <div class="reaction-wrapper">
                             <i class="icon fa-regular fa-heart" id="lb" onclick="likupb();"></i>
-                            <i class="icon fa-regular fa-paper-plane"></i>
+                            <i class="icon fa-regular fa-paper-plane" onclick="navigator.share({ title: '조식', text: document.getElementById('breakfast').innerText })"></i>
                         </div>
                         <p class="likes">좋아요 <span id="likeb">0</span>개</p>
                         <p class="description"><span> </span> <span id="breakfast"></span></p>
@@ -52,7 +52,7 @@
                     <div class="post-content">
                         <div class="reaction-wrapper">
                             <i class="icon fa-regular fa-heart" id="ll" onclick="likupl();"></i>
-                            <i class="icon fa-regular fa-paper-plane"></i>
+                            <i class="icon fa-regular fa-paper-plane" onclick="navigator.share({ title: '중식', text: document.getElementById('lunch').innerText })"></i>
                         </div>
                         <p class="likes">좋아요 <span id="likel">0</span>개</p>
                         <p class="description"><span> </span> <span id="lunch"></span></p>
@@ -69,7 +69,7 @@
                     <div class="post-content">
                         <div class="reaction-wrapper">
                             <i class="icon fa-regular fa-heart" id="ld" onclick="likupd();"></i>
-                            <i class="icon fa-regular fa-paper-plane"></i>
+                            <i class="icon fa-regular fa-paper-plane" onclick="navigator.share({ title: '석식', text: document.getElementById('dinner').innerText })"></i>
                         </div>
                         <p class="likes">좋아요 <span id="liked">0</span>개</p>
                         <p class="description"><span> </span> <span id="dinner"></span></p>
