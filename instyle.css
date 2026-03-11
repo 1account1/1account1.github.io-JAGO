@@ -69,6 +69,10 @@ body {
     width: 400px;
 }
 
+.left-coll {
+    width: 170%;
+}
+
 /* 피드 카드 */
 .post {
     width: 100%; /* 이제 부모가 400px이므로 자동 400px이 됩니다 */
@@ -77,6 +81,7 @@ body {
     border-radius: 8px;
     margin-bottom: 20px;
 }
+
 
 .info {
     display: flex;
@@ -129,4 +134,14 @@ body {
     justify-content: center;
     font-size: xx-large;
 
+}
+
+#brim{
+    background-color: rgb(255, 194, 170);
+}
+#lnim{
+    background-color: rgb(255, 255, 170);
+}
+#dnim{
+    background-color: rgb(170, 255, 183);
 }
