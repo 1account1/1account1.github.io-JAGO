@@ -7,6 +7,60 @@ let lsb;
 let lsl;
 let lsd;
 
+// 한국 시간 기준으로 하이픈 없이 8자리(YYYYMMDD)만 생성
+const today = new Date().toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+}).replace(/\. /g, '').replace(/\./g, '');
+
+async function getTodayMenus() {
+    allMenuEntries = [];
+
+    // 2. 학교 정보 (님이 확인하신 N10으로 수정!)
+    const API_KEY = 'c7944f3d532d494da1d6e65f5d94a198';
+    const OFFICE_CODE = 'N10';      // 충청남도교육청 (님 지적이 맞음!)
+    const SCHOOL_CODE = '8140070';   // 천안중앙고등학교
+
+    const URL = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${API_KEY}&Type=json&pIndex=1&pSize=10&ATPT_OFCDC_SC_CODE=${OFFICE_CODE}&SD_SCHUL_CODE=${SCHOOL_CODE}&MLSV_FROM_YMD=${today}&MLSV_TO_YMD=${today}`;
+
+    try {
+        const response = await fetch(URL);
+        const data = await response.json();
+
+        if (data.mealServiceDietInfo) {
+            const rows = data.mealServiceDietInfo[1].row;
+
+            // 조식(1), 중식(2), 석식(3) 순서 정렬
+            rows.sort((a, b) => a.MMEAL_SC_CODE - b.MMEAL_SC_CODE);
+
+            allMenuEntries = rows.map(item => item.DDISH_NM);
+
+            console.log(`✅ 드디어! ${today} 식단 리스트:`, allMenuEntries);
+            
+            // 만약 3개가 다 나왔다면 콘솔에 예쁘게 출력
+            allMenuEntries.forEach((menu, index) => {
+                const label = index === 0 ? "아침" : index === 1 ? "점심" : "저녁";
+                console.log(`[${label}] ${menu.replace(/<br\/>/g, ' ')}`);
+            });
+        } else {
+            console.log("❌ 응답 오류:", data.RESULT.MESSAGE);
+        }
+    } catch (error) {
+        console.error("연결 에러:", error);
+    }
+}
+
+getTodayMenus();
+// 또는 더 직관적인 방식
+const now = new Date();
+const y = now.getFullYear();
+const m = String(now.getMonth() + 1).padStart(2, '0');
+const d = String(now.getDate()).padStart(2, '0');
+const today_final = `${y}${m}${d}`; 
+
+console.log("오늘 날짜 변수:", today_final); // 결과: 20260317
+
 async function updateC17Value(newValue) {
   // 주소 뒤에 /컬럼명/찾을값 을 붙입니다. 
   // 예: id가 1인 행을 찾음
@@ -94,9 +148,9 @@ async function getGoogleSheet() {
     console.log(foodd);
     const dayy = new Date().getDay();
     console.log(dayy);
-    document.getElementById('breakfast').innerText = foodd[3*(dayy - 1)];
-    document.getElementById('lunch').innerText = foodd[3*(dayy - 1) + 1];
-    document.getElementById('dinner').innerText = foodd[3*(dayy - 1) + 2];
+    document.getElementById('breakfast').innerText = allMenuEntries[0];
+    document.getElementById('lunch').innerText = allMenuEntries[0];
+    document.getElementById('dinner').innerText = allMenuEntries[0];
     if(dayy == 0){
       document.getElementById('brim').innerText = "주말";
       document.getElementById('lnim').innerText = "주말";
