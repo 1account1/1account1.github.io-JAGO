@@ -148,9 +148,9 @@ async function getGoogleSheet() {
     console.log(foodd);
     const dayy = new Date().getDay();
     console.log(dayy);
-    document.getElementById('breakfast').innerText = allMenuEntries[0];
-    document.getElementById('lunch').innerText = allMenuEntries[0];
-    document.getElementById('dinner').innerText = allMenuEntries[0];
+    document.getElementById('breakfast').innerHTML = allMenuEntries[0];
+    document.getElementById('lunch').innerHTML = allMenuEntries[0];
+    document.getElementById('dinner').innerHTML = allMenuEntries[0];
     if(dayy == 0){
       document.getElementById('brim').innerText = "주말";
       document.getElementById('lnim').innerText = "주말";
